@@ -5,7 +5,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report
-
+# 12345
 # 加载数据
 df = pd.read_csv('Viral_Social_Media_Trends.csv')
 
