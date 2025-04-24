@@ -3,4 +3,4 @@ Data Splitting Report:
 - Split ratio: 80% training, 20% testing
 - Training set: 4000 rows (80.0%)
 - Testing set: 1000 rows (20.0%)
-- Stratification: Applied on 'Platform' column if available, otherwise random split
+- Stratification: Applied on 'Platform' column
