@@ -1,5 +1,6 @@
 Data Splitting Report:
-- Loaded cleaned dataset: 5000 rows, 10 columns
+- Loaded original dataset: 5000 rows, 10 columns
+- Cleaned dataset (after removing 'Region'): 5000 rows, 9 columns
 - Split ratio: 80% training, 20% testing
 - Training set: 4000 rows (80.0%)
 - Testing set: 1000 rows (20.0%)
