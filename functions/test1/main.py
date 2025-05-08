@@ -1,24 +1,35 @@
-# main.py
+from social_media_engagement_model import SocialMediaEngagementModel
 
-from aimodel import load_data, recommend_platform
-
-
-print("welcome to the Social Media Platform Recommendation System!")
+if __name__ == "__main__":
+    # Initialize model
+    model = SocialMediaEngagementModel('cleaned2_Viral_Social_Media_Trends.csv')
     
-hashtag = input("please input #Hashtag）: ").strip()
-content_type = input("please input content_type（such as video/image/text）: ").strip()
-region = input("please input region(such as US/UK/Asia）: ").strip()
-
-# load data
-df = load_data()
-
-# recommend platform based on user input
-platform, score = recommend_platform(df, hashtag, content_type, region)
-
-if platform:
-    print(f"\n recommend platform：{platform}")
-    print(f" avg Engagement Score：{score:.2f}")
-else:
-    print("\n No matching data found for the given criteria.")
-
-
+    # Load data
+    model.load_and_process_data()
+    
+    # Print sample Engagement_Level to verify calculation
+    print("Engagement_Level sample:")
+    print(model.df[['Likes', 'Shares', 'Comments', 'Views', 'Engagement_Level']].head())
+    
+    # Check for data issues
+    print("Data issues:", model.check_data_issues())
+    
+    # Run the rest of the pipeline
+    model.encode_features()
+    model.split_data()
+    model.build_model()
+    model.train_model()
+    model.evaluate_model()
+    model.plot_training_curves()
+    
+    # Get and print evaluation results
+    accuracy, report = model.evaluate_model()
+    print("准确率:", accuracy)
+    print("\n分类报告:")
+    for label, metrics in report.items():
+        if isinstance(metrics, dict):
+            print(f"{label}:")
+            for metric, value in metrics.items():
+                print(f"  {metric}: {value:.4f}")
+        else:
+            print(f"{label}: {metrics:.4f}")
