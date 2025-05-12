@@ -10,10 +10,8 @@ from tensorflow.keras.layers import Dense, Input, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
 # 这个Model中的engagement level是原本自带的，由模型训练过程中进行预测
 # Suppress TensorFlow INFO messages
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 class EngagementClassifier1:
     def __init__(self):
